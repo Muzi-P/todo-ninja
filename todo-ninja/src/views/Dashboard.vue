@@ -3,6 +3,17 @@
     <h1 class="subheading grey--text"> Dashboard</h1>   
 
      <v-container class="my-5">
+       <v-layout row class="mb-5">
+         <v-btn small flat color = "grey">
+           <v-icon left small>folder</v-icon>
+           <span class="caption text-lowercase">By folder name</span> 
+         </v-btn>
+         <v-btn small flat color = "grey">
+           <v-icon left small>folder</v-icon>
+           <span class="caption text-lowercase">By folder name</span> 
+         </v-btn>
+
+       </v-layout>
        <v-card flat class="pa-3" v-for= "project in projects" :key="project.title">
          <v-layout row wrap :class="`pa-3 project ${project.status}`">
            <v-flex xs12 md6>
@@ -18,22 +29,13 @@
               <div>{{project.due}}</div>
            </v-flex>
            <v-flex xs2 sm4 md2>
-              <div class="caption grey--text">Status</div>
-              <div>{{project.status}}</div>
+              <div class="right">
+                <v-chip small :class="`${project.status} white--text my-2 caption`">{{ project.status }}</v-chip>
+              </div>
            </v-flex>
          </v-layout>
         <v-divider></v-divider>
        </v-card>
-          <!-- <v-row>
-              <v-flex xs12 md6>
-                <v-btn oulined block class = "primary">1</v-btn>
-              </v-flex>
-
-              <v-flex xs12 md6>
-                <v-btn oulined block class = "primary">2</v-btn>
-              </v-flex>
-
-          </v-row> -->
     </v-container>    
   </div>
 </template>
@@ -64,6 +66,16 @@ export default {
   }
   .project.overdue{
       border-left: 4px solid tomato;
+  }
+
+  .v-chip.complete {
+      background: #3cd1c2;
+  }
+  .v-chip.ongoing {
+      background: #ffaa2c;
+  }
+  .v-chip.overdue {
+      background: #f83e70;
   }
  
 </style>
